@@ -2,8 +2,10 @@
 # PIC18F4550 │ Lenguaje C │ Mplab & compilador XC8 
 # Codigo en el archivo main.c │ simulacion del codigo con el archivo simulide
 
-#Informacion sobre el codigo:
+Informacion sobre el codigo:
+
 -Realizada en base a una maquina de estado.
+
 Los valores de tiempo extendidos fueron cambiados por otros de mas corta duracion para el rapido chequeo de funcionamiento.
 1- Si se recibe la orden de lavar con agua caliente (TECLA 2) se debe activar la resistencia que caliente el agua por 2 minutos desactivando la posibilidad de comenzar el lavado. 
 
