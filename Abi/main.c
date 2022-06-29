@@ -1,9 +1,6 @@
 /**************************
  * File:   main.c                                                           *
- * Author: Esteban Lemos                                                    *
- * Created on 5 de febrero de 2014, 20:49                                   *
- * En caso de necesitar el proyecto completo ingresar en                    *
- * https://github.com/EEST1/Plantilla_6to                                   *
+ * Author: Abigail Miranda                                                    *
  **************************/
 
 
@@ -16,7 +13,7 @@
 
 #include "ConfShield2_1.h" //cambiar para el teclado // esta viene x defecto
 //el teclado utiliza los mismos pines que el entrenador pero la
-//incializaci´on esta disponible en el Shield1.3 no en el 2.1.
+//incializaciÂ´on esta disponible en el Shield1.3 no en el 2.1.
 #include "ConfShield1_3.h"
 #include "lcd.h"
 #include "teclado.h"
@@ -122,7 +119,7 @@ long int readADC() { //hago una funcion que devuelve el valor de kilos transferi
     kilos = (guarda_ADC * 50) / 1023; //hago la cuenta. explicado en la otra carpeta...
     //// para esto hago la regla de 3simples.
     //si 10mv son 100gr. 5v son 50000gr, o sea, 50kilos.
-    //entonces si 50kg son 1023bits (pq ahora el conversor está en 10 bits tengo 1023 posiciones))
+    //entonces si 50kg son 1023bits (pq ahora el conversor estÃ¡ en 10 bits tengo 1023 posiciones))
     // (x*50kg)/1023= valor de bits 
     
     return kilos;//devuelvo el valor en la variable kilos
@@ -134,12 +131,12 @@ void __interrupt myISR(void) {
     //TIMMER 1 PARA SEGUNDOS
     if (TMR0IF == 1) { //termino termino de contar el timer?
         TMR0IF = 0; //bajamos el flag
-        TMR0L = 0xD2; //el timer contará 47 fosc/4 * 256 = 12032 * 0,0833us
+        TMR0L = 0xD2; //el timer contarÃ¡ 47 fosc/4 * 256 = 12032 * 0,0833us
         TMR0H = 0x48; //en total aprox 1.0022ms  casi 1ms
           //    des =~ des;
         //casi todo o todo esta definido a partir de u if si flag es ifgual a 1 pq sino los contadores
         //van a empezar a contar a partir de que prenda la maquina destado. entonces con esto defino que
-        //comiencen a contar cuando el flag esté en 1, y eso lo defino recien
+        //comiencen a contar cuando el flag estÃ© en 1, y eso lo defino recien
         //cuando entro al caso y ahi lo activo, asi recien ahi empieza a contar
 if (flag_inicio == 1) { //si la tecla 1 fue presionada, el falg se pone en 1 simulando que aun esta presionada
             if (cont_inicio != 0) { //s es diferente a 0 decrementa!!
@@ -253,7 +250,7 @@ if (flag_inicio == 1) { //si la tecla 1 fue presionada, el falg se pone en 1 sim
 
     if (TMR1IF == 1) { //TIMER 1 PARA ms
         TMR1IF = 0; //bajamos el flag
-        TMR1L = 0x1B; //el timer contará 1200 fosc/4 * 1 = 12032 * 0,0833us
+        TMR1L = 0x1B; //el timer contarÃ¡ 1200 fosc/4 * 1 = 12032 * 0,0833us
         TMR1H = 0xD1; //en total aprox 99.96us  casi 100us
         tic_teclado();
         tic_LCD();
@@ -269,7 +266,7 @@ if (flag_inicio == 1) { //si la tecla 1 fue presionada, el falg se pone en 1 sim
 
 
 
-void principal() {//declaro la función multiplexado(quiero mostrar número 13)
+void principal() {//declaro la funciÃ³n multiplexado(quiero mostrar nÃºmero 13)
     switch (multi) {  //switch respecto a multi
         case 0://primer caso(DISPLAY1)
         { //etapa 1 2 y 3
@@ -316,8 +313,8 @@ if (flag_etapa2 == 1) { //si la tecla 1 esta presionada SIMULACION // ahi si ent
             //             } 
             //             }
              
-             //-----------etapa 3, si kilos está entre estos valores paso a la siguiente etapa
-             //paso al siguiente caso donde estás definidas las funciones--------------//
+             //-----------etapa 3, si kilos estÃ¡ entre estos valores paso a la siguiente etapa
+             //paso al siguiente caso donde estÃ¡s definidas las funciones--------------//
              if(kilos>=5 && kilos<10){ //esto es en caso de la etapa 3
                  multi=1; //paso al siguiente caso
              }
@@ -328,12 +325,12 @@ if (flag_etapa2 == 1) { //si la tecla 1 esta presionada SIMULACION // ahi si ent
                  multi=1;
              }
         }
-            break;//si entro a este caso, significa que los demás caso no es
+            break;//si entro a este caso, significa que los demÃ¡s caso no es
              //entonces "rompe", y no entra en los siguientes casos 
             // sino que los ignora a todos.
         case 1:// etapa 3!!
         {
-            pesobajo(); // si kilos está entre 5 y 10kg entrá acá. al finalizar esta funcion pasa al siguiente caso
+            pesobajo(); // si kilos estÃ¡ entre 5 y 10kg entrÃ¡ acÃ¡. al finalizar esta funcion pasa al siguiente caso
             pesomedio();///si kilos esta entre 10 y 15 lo mismo 
             pesoalto(); //same
 
@@ -367,10 +364,10 @@ if (flag_etapa2 == 1) { //si la tecla 1 esta presionada SIMULACION // ahi si ent
                set_CURSOR(0x00); // escribo en el lcd
         msg2LCD("DESAGOTANDO...");
             }
-            if(contdes_a==0){ // si llegó a 0
+            if(contdes_a==0){ // si llegÃ³ a 0
                 DESAGOTE=0; // lo apago
                 clear_LCD(); //limpio pantalla
-                                             multi=6; // paso al siguente caso , igual acà hay que dirigirse a la otra carpea donde tengo las definiciones de las otras etapas que siguen que aca nose pq no funcionan
+                                             multi=6; // paso al siguente caso , igual acÃ  hay que dirigirse a la otra carpea donde tengo las definiciones de las otras etapas que siguen que aca nose pq no funcionan
 
             }
 
@@ -411,7 +408,7 @@ if (flag_etapa2 == 1) { //si la tecla 1 esta presionada SIMULACION // ahi si ent
                set_CURSOR(0x00); // escribo en el lcd
         msg2LCD("DESAGOTANDO...");
             }
-            if(cont_siete==0){ // si llegó a 0
+            if(cont_siete==0){ // si llegÃ³ a 0
                 DESAGOTE=0; // lo apago
                 clear_LCD(); //limpio pantalla
 //                multi=7;
@@ -597,11 +594,11 @@ void pesoalto() {
 //        }
 //}
 
-//void desagotee() {//declaro la función multiplexado(quiero mostrar número 13)
+//void desagotee() {//declaro la funciÃ³n multiplexado(quiero mostrar nÃºmero 13)
 //    switch (cinco) {  //switch respecto a multi
 //        case 0://primer caso(DISPLAY1)
 //        {
-//              if (desag != 0) { // si a no llegó a 0
+//              if (desag != 0) { // si a no llegÃ³ a 0
 //
 //                            f3 = 1; // activo el flag para qu recien ahi comeince el temporizador de ese led
 //                            DESAGOTE = 1; // activo el led
@@ -610,14 +607,14 @@ void pesoalto() {
 //                            set_CURSOR(0x41);
 //                            msg2LCD("        ");
 //                        }
-//                        if (desag == 0) { // si llegó a 0
+//                        if (desag == 0) { // si llegÃ³ a 0
 //                            f3 = 0; // pongo el flag en 0 para que deje de contar
 //                            clear_LCD(); // limpio pantalla lcd
 //                            cinco = 1; // paso al siguiente caso
 //                        }
 //
 //        }
-//            break;//si entro a este caso, significa que los demás caso no es
+//            break;//si entro a este caso, significa que los demÃ¡s caso no es
 //             //entonces "rompe", y no entra en los siguientes casos 
 //            // sino que los ignora a todos.
 //        case 1://segundo caso(DISPLAY 2)
@@ -706,12 +703,12 @@ void centrifugado(){
 //==================== ETAPA 4 =============//
 void casos() {//etapa 4
 
-    if (c != 0) { // si c no llegó a 0 o sea que si los 10 min o cualquier valor de tiempo todavia no terminaron
+    if (c != 0) { // si c no llegÃ³ a 0 o sea que si los 10 min o cualquier valor de tiempo todavia no terminaron
         flag = 1; // activo el flaf para que ahi comience el temporizador. recien ahora coienzo a rotar el encendido y apagado de los leds
         switch (cuatro) { //switch respecto a multi
             case 0://primer caso(enciendo el led 1)
             {
-                if (a != 0) { // si a no llegó a 0. este contador esta cargado a 5seg
+                if (a != 0) { // si a no llegÃ³ a 0. este contador esta cargado a 5seg
 
                     fa = 1; // activo el flag para qu recien ahi comeince el temporizador de ese led
                     MOTOR_HORA = 1; // activo el led
@@ -720,14 +717,14 @@ void casos() {//etapa 4
                     set_CURSOR(0x41);
                     msg2LCD("LAVANDO...");
                 } // si llego a 0 paso al otro caso donde lo apago. same en caso 2
-                if (a == 0) { // si llegó a 0
+                if (a == 0) { // si llegÃ³ a 0
                     fa = 0; // pongo el flag en 0 para que deje de contar
                     clear_LCD(); // limpio pantalla lcd
                     cuatro = 1; // paso al siguiente caso
                 }
 
 }
-                break; //si entro a este caso, significa que los demás caso no es
+                break; //si entro a este caso, significa que los demÃ¡s caso no es
                 //entonces "rompe", y no entra en los siguientes casos 
                 // sino que los ignora a todos.
             case 1://segundo caso
@@ -752,7 +749,7 @@ void casos() {//etapa 4
                     set_CURSOR(0x41);
                     msg2LCD("LAVANDO...");
                 }
-                if(b==0){ // si b llegó a 0
+                if(b==0){ // si b llegÃ³ a 0
                     fb=0; //apago el flag
                     cuatro=3; //paso al sig caso
                     clear_LCD(); // limpio pantalla
@@ -762,7 +759,7 @@ void casos() {//etapa 4
 
             case 3:
             {
-                if (b == 0) { // si llegó a 0
+                if (b == 0) { // si llegÃ³ a 0
                     MOTOR_ANTI = 0; // apago el led
                     clear_LCD(); //limpio pantalla
                     b = 5; //cargo para la proxiima vez
@@ -772,7 +769,7 @@ void casos() {//etapa 4
             }
         }
     }
-    if(c==0){ // pero x fuera del suich digo que si el contador principal de los 10min llegó a 0
+    if(c==0){ // pero x fuera del suich digo que si el contador principal de los 10min llegÃ³ a 0
         flag=0; //entonces apago el flag para que no entre a la maquina de estados
         MOTOR_HORA=0; // y apago los leds x las dudas
         MOTOR_ANTI=0;
